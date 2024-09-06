@@ -1,9 +1,13 @@
 {
-  "name": "",
+  "name": "pogo-be",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/functions/*.js",
   "scripts": {
+    "db:push": "dotenv drizzle-kit push",
+    "db:generate": "dotenv drizzle-kit generate",
+    "db:migrate": "dotenv drizzle-kit migrate",  
+    "db:studio": "dotenv drizzle-kit studio",
     "build": "tsc",
     "watch": "tsc -w",
     "clean": "rimraf dist",
@@ -26,6 +30,7 @@
     "azure-functions-core-tools": "^4.x",
     "drizzle-kit": "^0.24.2",
     "rimraf": "^5.0.0",
-    "typescript": "^4.0.0"
+    "typescript": "^4.0.0",
+    "dotenv-cli": "^7.3.0"
   }
 }
