@@ -1,5 +1,6 @@
 import { TRPCError } from "@trpc/server";
-import { type JwtPayload, verify as verifyToken } from 'jsonwebtoken';
+import { type JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { AzureFunctionsContextOption } from "trpc-azure-functions-adapter";
 import { env } from "../utils/env";
 
@@ -12,7 +13,7 @@ export const validateJwt = ({request, context}: AzureFunctionsContextOption) => 
 
   try {
     const token = maybeAuthHeader.replace("Bearer ", "");
-    return verifyToken(token, env.jwtSecret) as JwtPayload;
+    return jwt.verify(token, env.jwtSecret, { complete: true }) as JwtPayload;
   } catch (e) {
     context.error("unauthorized", "invalid token", e);
     throw new TRPCError({ code: "UNAUTHORIZED" });
