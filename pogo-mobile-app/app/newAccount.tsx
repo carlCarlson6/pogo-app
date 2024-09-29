@@ -1,10 +1,22 @@
-import { View, Text, Image, TextInput } from "react-native";
+import { useRouter } from "expo-router";
+import { View, Text, Image, TextInput, Pressable, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
+
 
 export default function NewAccount() {
+  const { goBack } = useNewAccount();
+
   return (
     <View className="flex-1 flex-col bg-black gap-5 pt-20">
+      
       <View className="pl-5">
-        <Text className="text-white">go back</Text>  
+        <Pressable
+          className="w-16 -inset-x-5"
+          onPress={goBack}
+        >
+          <View className="pl-5">
+            <Image source={require("@/assets/images/Chevron.png")} />
+          </View>
+        </Pressable>  
       </View>  
   
       <View className="border-4 w-52 h-52 -inset-x-10 border-white rounded-full flex items-center justify-center">
@@ -14,7 +26,7 @@ export default function NewAccount() {
       <View className="gap-4 pr-4">
         <View className="bg-zinc-800 py-2">
           <TextInput
-            className="text-lg pl-4" 
+            className="text-lg pl-4 text-white" 
             placeholder="Nombre"
           />
         </View>
@@ -41,7 +53,15 @@ export default function NewAccount() {
           />
         </View>
       </View>
-
+  
     </View>
   );
-} 
+}
+
+const useNewAccount = () => {
+  const router = useRouter();
+
+  return {
+    goBack: router.back
+  };
+}

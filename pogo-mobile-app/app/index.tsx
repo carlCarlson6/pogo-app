@@ -32,7 +32,7 @@ const NewAccountButton = () => {
   return (
     <Pressable
       className="bg-white rounded-3xl px-32 py-3"
-      onPress={() => router.replace("/newAccount")}
+      onPress={() => router.push("/newAccount")}
     >
       <Text className="text-xl">Crear cuenta</Text>
     </Pressable>
