@@ -3,6 +3,7 @@ import { createClient, Session } from "@supabase/supabase-js";
 import { useEffect } from "react";
 import { create } from 'zustand'
 import { env } from "../utils/env";
+import { Router } from "expo-router";
 
 export const sessionStore = create<{ 
   session: Session|null,
@@ -37,4 +38,8 @@ export const supabase = createClient(env.Supabase.Url, env.Supabase.AnonKey, {
     persistSession: true,
     detectSessionInUrl: true
   }
-})
+});
+
+export type PropsWithRouter = {
+  router: Router
+};

@@ -5,6 +5,18 @@ import { Flow } from 'react-native-animated-spinkit'
 import { match, P } from 'ts-pattern';
 import { hasFieldsInput } from "@/lib/utils";
 import { supabase } from "@/lib/auth/session";
+import { PropsWithRouter } from ".";
+
+export const GoToLoginButton = ({router}: PropsWithRouter) => {
+  return (
+    <Pressable
+      className="bg-white rounded-3xl px-32 py-3"
+      onPress={() => router.replace("/login")}
+    >
+      <Text className="text-xl">Iniciar sesión</Text>  
+    </Pressable>
+  );
+}
 
 export const LoginButton = ({canLogin, isLoging, executeLogin}: {
   canLogin: boolean,

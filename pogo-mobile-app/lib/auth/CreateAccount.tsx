@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import { hasFieldsInput } from "../utils";
+import { PropsWithRouter } from ".";
+
+export const GoToNewAccountButton = ({router}: PropsWithRouter) => {
+  return (
+    <Pressable
+      className="bg-white rounded-3xl px-32 py-3"
+      onPress={() => router.replace("/newAccount")}
+    >
+      <Text className="text-xl">Crear cuenta</Text>
+    </Pressable>
+  );
+}
 
 export const CreateAccountButton = ({canCreateAccount}: {canCreateAccount: boolean}) => {
   return (

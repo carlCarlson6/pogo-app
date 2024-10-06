@@ -1,6 +1,8 @@
 import { PogoLogoImage } from "@/lib/utils/PogoLogoImg";
 import { Image, Pressable, Text, View } from "react-native";
-import { Router, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
+import { GoToNewAccountButton } from "@/lib/auth/CreateAccount";
+import { GoToLoginButton } from "@/lib/auth/Login";
 
 export default function Index() {
   const router = useRouter();
@@ -14,11 +16,11 @@ export default function Index() {
       
         <View className="pt-32 gap-2">
           <View>
-            <NewAccountButton router={router} />
+            <GoToNewAccountButton router={router} />
           </View>
         
           <View>
-            <LoginButton router={router} />    
+            <GoToLoginButton router={router} />    
           </View>
         </View>
 
@@ -29,30 +31,3 @@ export default function Index() {
     </View>
   );
 }
-
-type PropsWithRouter = {
-  router: Router
-}
-
-const NewAccountButton = ({router}: PropsWithRouter) => {
-  return (
-    <Pressable
-      className="bg-white rounded-3xl px-32 py-3"
-      onPress={() => router.replace("/newAccount")}
-    >
-      <Text className="text-xl">Crear cuenta</Text>
-    </Pressable>
-  );
-}
-
-const LoginButton = ({router}: PropsWithRouter) => {
-  return (
-    <Pressable
-      className="bg-white rounded-3xl px-32 py-3"
-      onPress={() => router.replace("/login")}
-    >
-      <Text className="text-xl">Iniciar sesión</Text>  
-    </Pressable>
-  );
-}
-
