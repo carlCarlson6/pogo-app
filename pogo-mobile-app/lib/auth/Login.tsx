@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { Flow } from 'react-native-animated-spinkit'
 import { match, P } from 'ts-pattern';
-import { hasFieldsInput } from "@/lib";
+import { hasFieldsInput } from "@/lib/utils";
 import { supabase } from "@/lib/auth/session";
 
 export const LoginButton = ({canLogin, isLoging, executeLogin}: {

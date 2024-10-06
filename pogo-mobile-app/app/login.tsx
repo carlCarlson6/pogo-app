@@ -1,9 +1,9 @@
-import { GoBackButton } from "@/lib/components/GoBackButton";
-import { PogoLogoImage } from "@/lib/components/PogoLogoImg";
+import { GoBackButton } from "@/lib/utils/GoBackButton";
+import { PogoLogoImage } from "@/lib/utils/PogoLogoImg";
 import React from "react";
 import { Text, View } from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { TextField } from "@/lib/components/TextField";
+import { TextField } from "@/lib/utils/TextField";
 import { LoginButton, useLogin } from "@/lib/auth/Login";
 
 export default function Login() {

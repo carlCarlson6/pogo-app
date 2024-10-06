@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import { hasFieldsInput } from "..";
+import { hasFieldsInput } from "../utils";
 
 export const CreateAccountButton = ({canCreateAccount}: {canCreateAccount: boolean}) => {
   return (

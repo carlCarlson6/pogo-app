@@ -1,4 +1,4 @@
-import { PogoLogoImage } from "@/lib/components/PogoLogoImg";
+import { PogoLogoImage } from "@/lib/utils/PogoLogoImg";
 import { Image, Pressable, Text, View } from "react-native";
 import { Router, useRouter } from "expo-router";
 

@@ -1,6 +1,6 @@
 import { CreateAccountButton, useCreateNewAccount } from "@/lib/auth/CreateAccount";
-import { GoBackButton } from "@/lib/components/GoBackButton";
-import { TextField } from "@/lib/components/TextField";
+import { GoBackButton } from "@/lib/utils/GoBackButton";
+import { TextField } from "@/lib/utils/TextField";
 import { View, Image, KeyboardAvoidingView } from "react-native";
 
 export default function NewAccount() {
