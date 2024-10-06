@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
-import { useRouter } from "expo-router";
+import { Router, useRouter } from "expo-router";
 import { Flow } from 'react-native-animated-spinkit'
 import { match, P } from 'ts-pattern';
 import { hasFieldsInput } from "@/lib/utils";
 import { supabase } from "@/lib/auth/session";
-import { PropsWithRouter } from ".";
 
-export const GoToLoginButton = ({router}: PropsWithRouter) => {
+export const GoToLoginButton = ({router}: {router: Router}) => {
   return (
     <Pressable
       className="bg-white rounded-3xl px-32 py-3"

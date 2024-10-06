@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { TextField } from "@/lib/utils/TextField";
 import { LoginButton, useLogin } from "@/lib/auth/Login";
 
+
 export default function Login() {
   const { canLogin, set, credentials, executeLogin, isLoging, error } = useLogin();
   return (
@@ -23,16 +24,20 @@ export default function Login() {
         </View>
           
         <View className="py-6 px-4 gap-4 w-full pb-36">
-          <TextField 
-            get={credentials.email}
-            set={set.email}
-            placeholder="Email"
-          />
-          <TextField 
-            get={credentials.password}
-            set={set.password}
-            placeholder="Contraseña"
-          />
+          <View>
+            <TextField 
+              get={credentials.email}
+              set={set.email}
+              placeholder="Email"
+            />
+          </View>
+          <View>
+            <TextField 
+              get={credentials.password}
+              set={set.password}
+              placeholder="Contraseña"
+            />
+          </View>
         </View>
       
         <View className="flex justify-between items-center">

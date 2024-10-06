@@ -20,10 +20,7 @@ export const useFetchSession = () => {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
-    const { data: {subscription} } = supabase.auth.onAuthStateChange((_, session) => {
-      console.log(session);
-      setSession(session);
-    });
+    const { data: {subscription} } = supabase.auth.onAuthStateChange((_, session) => setSession(session));
     return () => subscription.unsubscribe();
   }, []);
 

@@ -1,8 +1,9 @@
 import { PogoLogoImage } from "@/lib/utils/PogoLogoImg";
-import { Image, Pressable, Text, View } from "react-native";
+import { View, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { GoToNewAccountButton } from "@/lib/auth/CreateAccount";
 import { GoToLoginButton } from "@/lib/auth/Login";
+
 
 export default function Index() {
   const router = useRouter();
