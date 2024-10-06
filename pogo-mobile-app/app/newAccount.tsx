@@ -1,4 +1,4 @@
-import { GoBackButton } from "@/components/GoBackButton";
+import { GoBackButton } from "@/lib/components/GoBackButton";
 import { useState } from "react";
 import { View, Text, Image, TextInput, Pressable, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet, Button } from "react-native";
 
@@ -7,7 +7,7 @@ export default function NewAccount() {
   return (
     <View className="bg-black h-screen pt-14 flex justify-between">
       <View>
-        <GoBackButton />
+        <GoBackButton goBackTo="/" />
 
         <View className="border-4 w-52 h-52 -inset-x-10 border-white rounded-full flex items-center justify-center">
           <Image source={require("@/assets/images/photo-camera.png")}/>

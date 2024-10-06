@@ -1,4 +1,4 @@
-import { PogoLogoImage } from "@/components/PogoLogoImg";
+import { PogoLogoImage } from "@/lib/components/PogoLogoImg";
 import { Image, Pressable, Text, View } from "react-native";
 import { Router, useRouter } from "expo-router";
 
@@ -38,7 +38,7 @@ const NewAccountButton = ({router}: PropsWithRouter) => {
   return (
     <Pressable
       className="bg-white rounded-3xl px-32 py-3"
-      onPress={() => router.push("/newAccount")}
+      onPress={() => router.replace("/newAccount")}
     >
       <Text className="text-xl">Crear cuenta</Text>
     </Pressable>
@@ -49,7 +49,7 @@ const LoginButton = ({router}: PropsWithRouter) => {
   return (
     <Pressable
       className="bg-white rounded-3xl px-32 py-3"
-      onPress={() => router.push("/login")}
+      onPress={() => router.replace("/login")}
     >
       <Text className="text-xl">Iniciar sesión</Text>  
     </Pressable>
