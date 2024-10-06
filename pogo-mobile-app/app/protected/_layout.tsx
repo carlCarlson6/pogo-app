@@ -1,4 +1,4 @@
-import { useSession } from "@/lib/auth";
+import { useSession } from "@/lib/auth/session";
 import { Redirect, Slot } from "expo-router";
 
 export default function RootLayout() {

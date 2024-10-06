@@ -1,9 +1,11 @@
+import { CreateAccountButton, useCreateNewAccount } from "@/lib/auth/CreateAccount";
 import { GoBackButton } from "@/lib/components/GoBackButton";
-import { useState } from "react";
-import { View, Text, Image, TextInput, Pressable, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet, Button } from "react-native";
+import { TextField } from "@/lib/components/TextField";
+import { View, Image, KeyboardAvoidingView } from "react-native";
 
 export default function NewAccount() {
-  const {canCreateAccount, command} = useCreateNewAccount();
+  const { canCreateAccount, fields } = useCreateNewAccount();
+  
   return (
     <View className="bg-black h-screen pt-14 flex justify-between">
       <View>
@@ -14,34 +16,25 @@ export default function NewAccount() {
         </View>
 
         <KeyboardAvoidingView className="py-6 px-4 gap-4">
-          <TextInput 
-            className="bg-zinc-900 text-white pl-4 py-2"
-            style={[{fontSize: 20}]}
+          <TextField 
+            get={fields.name}
+            set={fields.setName}
             placeholder="Nombre"
-            clearButtonMode={"always"}
-            value={command.name}
           />
-          <TextInput 
-            className="bg-zinc-900 text-white pl-4 py-2"
-            style={[{fontSize: 20}]}
+          <TextField 
+            get={fields.handle}
+            set={fields.setHandle}
             placeholder="Handle"
-            clearButtonMode={"always"}
-            value={command.handle}
           />
-          <TextInput 
-            className="bg-zinc-900 text-white pl-4 py-2"
-            style={[{fontSize: 20}]}
+          <TextField 
+            get={fields.email}
+            set={fields.setEmail}
             placeholder="Email"
-            clearButtonMode={"always"}
-            value={command.email}
           />
-          <TextInput 
-            className="bg-zinc-900 text-white pl-4 py-2"
-            style={[{fontSize: 20}]}
-            placeholder="Password"
-            clearButtonMode={"always"}
-            secureTextEntry={true}
-            value={command.password}
+          <TextField 
+            get={fields.password}
+            set={fields.setPassword}
+            placeholder="Contraseña"
           />
         </KeyboardAvoidingView>
       </View>
@@ -51,38 +44,3 @@ export default function NewAccount() {
   );
 }
 
-
-
-const CreateAccountButton = ({canCreateAccount}: {canCreateAccount: boolean}) => {
-  return (
-    <View className="px-4 pb-20">
-        { canCreateAccount ?
-          <Pressable
-            className="bg-white rounded-3xl px-32 py-3"
-          >
-              <Text className="text-xl">Crear cuenta</Text>
-            </Pressable> :
-          <Pressable
-            className="bg-zinc-900 rounded-3xl px-32 py-3"
-          >
-            <Text className="text-xl text-zinc-500">Crear cuenta</Text>
-          </Pressable>
-        }
-    </View>
-  );
-}
-
-const useCreateNewAccount = () => {
-  const [name, setName] = useState("");
-  const [handle, setHandle] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  return {
-    command: {
-      name, handle, email, password
-    },
-    setName, setHandle, setEmail, setPassword,
-    canCreateAccount: false
-  }
-}

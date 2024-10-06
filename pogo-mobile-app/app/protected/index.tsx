@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/auth/supabase";
+import { supabase } from "@/lib/auth/session";
 import { useRouter } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
