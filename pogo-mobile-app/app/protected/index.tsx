@@ -11,7 +11,7 @@ export default function Index() {
       </Text>
       <Pressable
         className="bg-white rounded-3xl px-32 py-3"
-        onPress={() => supabase.auth.signOut().then(_ => router.navigate("/"))}
+        onPress={() => supabase.auth.signOut()}
       >
         <Text className="text-xl">salir</Text>
       </Pressable>

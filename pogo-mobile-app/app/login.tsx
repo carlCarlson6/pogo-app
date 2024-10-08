@@ -8,7 +8,7 @@ import { LoginButton, useLogin } from "@/lib/auth/Login";
 
 
 export default function Login() {
-  const { canLogin, set, credentials, executeLogin, isLoging, error } = useLogin();
+  const { canLogin, set, credentials, executeLogin, error } = useLogin();
   return (
     <KeyboardAwareScrollView
       className="bg-black"
@@ -36,6 +36,7 @@ export default function Login() {
               get={credentials.password}
               set={set.password}
               placeholder="Contraseña"
+              secureInput={true}
             />
           </View>
         </View>
@@ -45,11 +46,7 @@ export default function Login() {
             <Text className="text-red-500 pb-2">Credenciales incorrectos</Text> :
             <Text>no-error-should-not-be-see</Text>
           }
-          <LoginButton 
-            canLogin={canLogin} 
-            isLoging={isLoging}
-            executeLogin={executeLogin}
-          />
+          <LoginButton canLogin={canLogin} execute={executeLogin} />
         </View>
 
       </View>

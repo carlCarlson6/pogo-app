@@ -1,16 +1,10 @@
 import { CreateAccountButton, useCreateNewAccount } from "@/lib/auth/CreateAccount";
 import { GoBackButton } from "@/lib/utils/GoBackButton";
 import { TextField } from "@/lib/utils/TextField";
-import { View, KeyboardAvoidingView, Pressable, Image } from "react-native";
-import * as ImagePicker from 'expo-image-picker';
-import { useState } from "react";
-import { StyleSheet } from 'react-native';
-
-const imagePlaceholder = require("@/assets/images/photo-camera.png");
+import { View, KeyboardAvoidingView, Pressable, Text } from "react-native";
 
 export default function NewAccount() {
-  const { canCreateAccount, fields, pickImage, image } = useCreateNewAccount();
-
+  const { canCreateAccount, createAccount, fields, pickImage, profileImage, error } = useCreateNewAccount();
   return (
     <View className="bg-black h-screen pt-14 flex justify-between">
       <View>
@@ -20,7 +14,7 @@ export default function NewAccount() {
           className="border-4 w-52 h-52 -inset-x-10 border-white rounded-full flex items-center justify-center"
           onPress={pickImage}
         >
-          {image}
+          {profileImage}
         </Pressable>
 
         <KeyboardAvoidingView className="py-6 px-4 gap-4">
@@ -50,20 +44,19 @@ export default function NewAccount() {
               get={fields.password}
               set={fields.setPassword}
               placeholder="Contraseña"
+              secureInput={true}
             />
           </View>
         </KeyboardAvoidingView>
       </View>
 
-      <CreateAccountButton canCreateAccount={canCreateAccount}/>
+      <View className="flex justify-between items-center">
+        { error ?
+          <Text className="text-red-500 pb-2">Hubo un problema creando su cuenta</Text> :
+          <Text>no-error-should-not-be-see</Text>
+        }
+        <CreateAccountButton canExecute={canCreateAccount} execute={createAccount}/>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: 320,
-    height: 440,
-    borderRadius: 18,
-  },
-});
