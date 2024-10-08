@@ -115,3 +115,8 @@ export const CreateAccountProfileImage = (
     </View>
   ))
   .exhaustive();
+
+export const CreateAccountError = ({error}:{error:boolean}) => (error ?
+  <Text className="text-red-500 pb-2">Hubo un problema creando su cuenta</Text> :
+  <Text>no-error-should-not-be-see</Text>
+)

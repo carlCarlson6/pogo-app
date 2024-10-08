@@ -4,7 +4,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextField } from "@/lib/utils/TextField";
-import { LoginButton, useLogin } from "@/lib/auth/Login";
+import { LoginButton, LoginError, useLogin } from "@/lib/auth/Login";
 
 
 export default function Login() {
@@ -42,10 +42,7 @@ export default function Login() {
         </View>
       
         <View className="flex justify-between items-center">
-          { error ?
-            <Text className="text-red-500 pb-2">Credenciales incorrectos</Text> :
-            <Text>no-error-should-not-be-see</Text>
-          }
+          <LoginError error={error} />
           <LoginButton canLogin={canLogin} execute={executeLogin} />
         </View>
 
@@ -53,4 +50,3 @@ export default function Login() {
     </KeyboardAwareScrollView>
   );
 }
-

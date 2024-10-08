@@ -1,4 +1,4 @@
-import { CreateAccountButton, useCreateNewAccount } from "@/lib/auth/CreateAccount";
+import { CreateAccountButton, CreateAccountError, useCreateNewAccount } from "@/lib/auth/CreateAccount";
 import { GoBackButton } from "@/lib/utils/GoBackButton";
 import { TextField } from "@/lib/utils/TextField";
 import { View, KeyboardAvoidingView, Pressable, Text } from "react-native";
@@ -51,10 +51,7 @@ export default function NewAccount() {
       </View>
 
       <View className="flex justify-between items-center">
-        { error ?
-          <Text className="text-red-500 pb-2">Hubo un problema creando su cuenta</Text> :
-          <Text>no-error-should-not-be-see</Text>
-        }
+        <CreateAccountError error={error} />
         <CreateAccountButton canExecute={canCreateAccount} execute={createAccount}/>
       </View>
     </View>

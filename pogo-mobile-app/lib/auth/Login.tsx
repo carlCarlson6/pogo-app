@@ -87,3 +87,8 @@ export const LoginButton = (
     }</View>
   );
 }
+
+export const LoginError = ({error}:{error:boolean}) => (error ?
+  <Text className="text-red-500 pb-2">Credenciales incorrectos</Text> :
+  <Text>no-error-should-not-be-see</Text>
+);
