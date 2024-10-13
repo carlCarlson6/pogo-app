@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient, Session } from "@supabase/supabase-js";
 import { useEffect } from "react";
 import { create } from 'zustand'
-import { env } from "../utils/env";
+import { env } from "./utils/env";
 
 export const sessionStore = create<{ 
   session: Session|null,
@@ -20,7 +20,10 @@ export const useFetchSession = () => {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
-    const { data: {subscription} } = supabase.auth.onAuthStateChange((_, session) => setSession(session));
+    const { data: {subscription} } = supabase.auth.onAuthStateChange((_, session) => {
+      console.log("updating auth state")
+      setSession(session)}
+    );
     return () => subscription.unsubscribe();
   }, []);
 

@@ -1,5 +1,5 @@
 import { type Config } from "drizzle-kit";
-import { env } from "./src/utils/env";
+import { env } from "./src/common/env";
 
 export default {
   out: "./drizzle-migrations",

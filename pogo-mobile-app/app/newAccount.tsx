@@ -1,4 +1,5 @@
-import { CreateAccountButton, CreateAccountError, useCreateNewAccount } from "@/lib/auth/CreateAccount";
+import { CreateAccountButton, CreateAccountError } from "@/lib/onboarding/create-account/components";
+import { useCreateNewAccount } from "@/lib/onboarding/create-account/useCreateNewAccount";
 import { GoBackButton } from "@/lib/utils/GoBackButton";
 import { TextField } from "@/lib/utils/TextField";
 import { View, KeyboardAvoidingView, Pressable, Text } from "react-native";

@@ -4,7 +4,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextField } from "@/lib/utils/TextField";
-import { LoginButton, LoginError, useLogin } from "@/lib/auth/Login";
+import { LoginButton, LoginError, useLogin } from "@/lib/onboarding/login/Login";
 
 export default function Login() {
   const { canLogin, set, credentials, executeLogin, error } = useLogin();

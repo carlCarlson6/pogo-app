@@ -4,7 +4,7 @@ import { Router, useRouter } from "expo-router";
 import { Flow } from 'react-native-animated-spinkit'
 import { match, P } from 'ts-pattern';
 import { hasFieldsInput } from "@/lib/utils";
-import { supabase } from "@/lib/auth/session";
+import { supabase } from "@/lib/auth";
 
 export const useLogin = () => {
   const router = useRouter();

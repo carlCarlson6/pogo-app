@@ -1,27 +1,23 @@
 import { inferAsyncReturnType, initTRPC } from "@trpc/server";
-import { AzureFunctionsContextOption } from "trpc-azure-functions-adapter";
+import { AzureFunctionsContextOption, createAzureFunctionsHandler } from "trpc-azure-functions-adapter";
 import { connectToDB } from "../drizzle";
-import { azFuncLogger } from "../../utils/logger";
-import { validateJwt } from "../auth";
+import { validateJwt } from "../../auth/validate-jwt";
+import { blobServiceClient } from "../azure-storage-account";
 
 export const createContext = (opts: AzureFunctionsContextOption) => ({ 
   ...opts, 
   db: connectToDB(),
-  logger: azFuncLogger(opts.context)
+  blobServiceClient,
 });
 
-export const trpc = initTRPC
+const t = initTRPC
   .context<inferAsyncReturnType<typeof createContext>>()
-  .meta<{ procedureName: string; }>()
   .create();
 
-export const publicProcedure = trpc.procedure.use(async ({next, ctx: { logger }, meta}) => {
-  logger.info("executing procedure", meta?.procedureName ?? "UNKNOWN");
-  const result = await next();
-  logger.info("completed procedure", meta?.procedureName ?? "UNKNOWN", "with result:", `${result.ok ? "OK" : "KO"}`);
-  return result;
-});
+export const publicProcedure = t.procedure;
 
 export const protectedProcedure = publicProcedure.use(({ next, ctx }) => next({
   ctx: { user: validateJwt(ctx) }
 }));
+
+export const router = t.router;
