@@ -1979,4 +1979,6 @@ export const musicGenres = [
 "zouk",
 "zouk love",
 "zydeco",
-];
+] as const;
+
+export type MusicGenre  = typeof musicGenres[number];

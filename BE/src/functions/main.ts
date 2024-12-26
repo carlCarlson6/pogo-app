@@ -1,16 +1,15 @@
 import { app } from "@azure/functions";
-import { createAzureFunctionsHandler } from "trpc-azure-functions-adapter";
-import { appRouter } from "../infrastructure/trpc/_app";
-import { createContext } from "../infrastructure/trpc";
+import { tprcAzFuncHandler } from "../infrastructure/trpc/_app";
 import { customJwtHook } from "../auth/custom-jwt-hook";
 
-app.http("trpc", {
-  methods: ["GET", "POST"],
-  route: "trpc/{params}",
-  handler: createAzureFunctionsHandler({ 
-    router: appRouter, 
-    createContext,
+app.http("hello-world", {
+  route: "",
+  methods: ["GET"],
+  handler: () => ({
+    status: 200,
+    text: () => Promise.resolve("hello-world")
   }),
 });
 
+app.http("trpc", tprcAzFuncHandler);
 app.http("custom-access-token-claims-hook", customJwtHook);

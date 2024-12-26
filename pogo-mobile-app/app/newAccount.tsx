@@ -5,7 +5,20 @@ import { TextField } from "@/lib/utils/TextField";
 import { View, KeyboardAvoidingView, Pressable, Text } from "react-native";
 
 export default function NewAccount() {
-  const { canCreateAccount, createAccount, fields, pickImage, profileImage, error } = useCreateNewAccount();
+  const { 
+    canCreateAccount, 
+    createAccount, 
+    fields: {
+      command,
+      setName,
+      setEmail,
+      setPassword,
+      setHandle
+    }, 
+    pickImage, 
+    profileImage, 
+    error 
+  } = useCreateNewAccount();
   return (
     <View className="bg-black h-screen pt-14 flex justify-between">
       <View>
@@ -21,29 +34,29 @@ export default function NewAccount() {
         <KeyboardAvoidingView className="py-6 px-4 gap-4">
           <View>
             <TextField 
-              get={fields.name}
-              set={fields.setName}
+              get={command.name}
+              set={setName}
               placeholder="Nombre"
             />
           </View>
           <View>
             <TextField 
-              get={fields.handle}
-              set={fields.setHandle}
+              get={command.handle}
+              set={setHandle}
               placeholder="Handle"
             />
           </View>
           <View>
             <TextField 
-              get={fields.email}
-              set={fields.setEmail}
+              get={command.email}
+              set={setEmail}
               placeholder="Email"
             />
           </View>
           <View>
             <TextField 
-              get={fields.password}
-              set={fields.setPassword}
+              get={command.password}
+              set={setPassword}
               placeholder="Contraseña"
               secureInput={true}
             />
